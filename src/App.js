@@ -1,6 +1,7 @@
 import General from './components/General';
 import Practical from './components/Practical';
 import Education from './components/Education';
+import Output from './components/Output';
 import './styles/App.css';
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
         <Practical />
         <Education />
       </form>
-      <div id="output">test</div>
+      <Output />
     </div>
   );
 }

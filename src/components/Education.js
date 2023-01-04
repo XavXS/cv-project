@@ -37,6 +37,7 @@ class Educational extends Experience {
                   <input
                     type="text"
                     value={element.school}
+                    name="school"
                     onChange={(e) =>
                       this.handleChange(e, element.id, 'school')
                     }
@@ -49,6 +50,7 @@ class Educational extends Experience {
                   <input
                     type="text"
                     value={element.title}
+                    name="major"
                     onChange={(e) =>
                       this.handleChange(e, element.id, 'title')
                     }
@@ -60,6 +62,7 @@ class Educational extends Experience {
                   Date of Study
                   <input
                     type="text"
+                    name="study-date"
                     value={element.date}
                     onChange={(e) =>
                       this.handleChange(e, element.id, 'date')

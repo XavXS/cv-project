@@ -39,6 +39,7 @@ class Practical extends Experience {
                   <input
                     type="text"
                     value={element.company}
+                    name="company"
                     onChange={(e) =>
                       this.handleChange(e, element.id, 'company')
                     }
@@ -51,6 +52,7 @@ class Practical extends Experience {
                   <input
                     type="text"
                     value={element.position}
+                    name="position"
                     onChange={(e) =>
                       this.handleChange(e, element.id, 'position')
                     }
@@ -61,6 +63,7 @@ class Practical extends Experience {
                 Main Tasks
                 <textarea
                   value={element.tasks}
+                  name="tasks"
                   onChange={(e) =>
                     this.handleChange(e, element.id, 'tasks')
                   }
@@ -72,6 +75,7 @@ class Practical extends Experience {
                   <input
                     type="date"
                     value={element.from}
+                    name="worked-from"
                     onChange={(e) =>
                       this.handleChange(e, element.id, 'from')
                     }
@@ -84,6 +88,7 @@ class Practical extends Experience {
                   <input
                     type="date"
                     value={element.until}
+                    name="worked-til"
                     onChange={(e) =>
                       this.handleChange(e, element.id, 'until')
                     }
