@@ -33,26 +33,30 @@ class Practical extends Experience {
         {this.state.list.map((element) => {
           return (
             <div key={element.id}>
-              <label>
-                Company Name
-                <input
-                  type="text"
-                  value={element.company}
-                  onChange={(e) =>
-                    this.handleChange(e, element.id, 'company')
-                  }
-                />
-              </label>
-              <label>
-                Position
-                <input
-                  type="text"
-                  value={element.position}
-                  onChange={(e) =>
-                    this.handleChange(e, element.id, 'position')
-                  }
-                />
-              </label>
+              <p>
+                <label>
+                  Company Name
+                  <input
+                    type="text"
+                    value={element.company}
+                    onChange={(e) =>
+                      this.handleChange(e, element.id, 'company')
+                    }
+                  />
+                </label>
+              </p>
+              <p>
+                <label>
+                  Position
+                  <input
+                    type="text"
+                    value={element.position}
+                    onChange={(e) =>
+                      this.handleChange(e, element.id, 'position')
+                    }
+                  />
+                </label>
+              </p>
               <label>
                 Main Tasks
                 <textarea
@@ -62,26 +66,30 @@ class Practical extends Experience {
                   }
                 ></textarea>
               </label>
-              <label>
-                Worked From
-                <input
-                  type="date"
-                  value={element.from}
-                  onChange={(e) =>
-                    this.handleChange(e, element.id, 'from')
-                  }
-                />
-              </label>
-              <label>
-                Worked Until
-                <input
-                  type="date"
-                  value={element.until}
-                  onChange={(e) =>
-                    this.handleChange(e, element.id, 'until')
-                  }
-                />
-              </label>
+              <p>
+                <label>
+                  Worked From
+                  <input
+                    type="date"
+                    value={element.from}
+                    onChange={(e) =>
+                      this.handleChange(e, element.id, 'from')
+                    }
+                  />
+                </label>
+              </p>
+              <p>
+                <label>
+                  Worked Until
+                  <input
+                    type="date"
+                    value={element.until}
+                    onChange={(e) =>
+                      this.handleChange(e, element.id, 'until')
+                    }
+                  />
+                </label>
+              </p>
             </div>
           );
         })}

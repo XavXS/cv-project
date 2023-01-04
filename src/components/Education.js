@@ -31,36 +31,42 @@ class Educational extends Experience {
         {this.state.list.map((element) => {
           return (
             <div key={element.id}>
-              <label>
-                School Name
-                <input
-                  type="text"
-                  value={element.school}
-                  onChange={(e) =>
-                    this.handleChange(e, element.id, 'school')
-                  }
-                />
-              </label>
-              <label>
-                Title of Study
-                <input
-                  type="text"
-                  value={element.title}
-                  onChange={(e) =>
-                    this.handleChange(e, element.id, 'title')
-                  }
-                />
-              </label>
-              <label>
-                Date of Study
-                <input
-                  type="text"
-                  value={element.date}
-                  onChange={(e) =>
-                    this.handleChange(e, element.id, 'date')
-                  }
-                />
-              </label>
+              <p>
+                <label>
+                  School Name
+                  <input
+                    type="text"
+                    value={element.school}
+                    onChange={(e) =>
+                      this.handleChange(e, element.id, 'school')
+                    }
+                  />
+                </label>
+              </p>
+              <p>
+                <label>
+                  Title of Study
+                  <input
+                    type="text"
+                    value={element.title}
+                    onChange={(e) =>
+                      this.handleChange(e, element.id, 'title')
+                    }
+                  />
+                </label>
+              </p>
+              <p>
+                <label>
+                  Date of Study
+                  <input
+                    type="text"
+                    value={element.date}
+                    onChange={(e) =>
+                      this.handleChange(e, element.id, 'date')
+                    }
+                  />
+                </label>
+              </p>
             </div>
           );
         })}
