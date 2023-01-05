@@ -1,0 +1,17 @@
+:root {
+
+}
+
+.output {
+    width: 525px;
+    height: 700px;
+    border: 2px solid var(--input-bg);
+    border-radius: 5px;
+}
+
+#output {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 25px;
+}
