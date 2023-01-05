@@ -4,13 +4,14 @@ import uniqid from 'uniqid';
 class Educational extends React.Component {
   render() {
     let type = 'education';
-    let { list, change, add } = this.props;
+    let { list, change, add, remove } = this.props;
     return (
       <div className="education-list">
         <button
+          type="button"
           className="add-btn"
-          onClick={(e) =>
-            add(e, type, {
+          onClick={() =>
+            add(type, {
               school: '',
               title: '',
               date: '',
@@ -23,7 +24,11 @@ class Educational extends React.Component {
         {list.map((element) => {
           return (
             <div key={element.id} className="education">
-              <button type="button" className="delete-btn">
+              <button
+                type="button"
+                className="delete-btn"
+                onClick={() => remove(type, element.id)}
+              >
                 ╳
               </button>
               <div className="divider"></div>

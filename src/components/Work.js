@@ -4,13 +4,14 @@ import uniqid from 'uniqid';
 class Work extends React.Component {
   render() {
     let type = 'work';
-    let { list, change, add } = this.props;
+    let { list, change, add, remove } = this.props;
     return (
       <div className="work-list">
         <button
           className="add-btn"
-          onClick={(e) =>
-            add(e, type, {
+          type="button"
+          onClick={() =>
+            add(type, {
               company: '',
               position: '',
               tasks: '',
@@ -26,7 +27,11 @@ class Work extends React.Component {
           return (
             <div key={element.id} className="work">
               <div className="divider"></div>
-              <button type="button" className="delete-btn">
+              <button
+                type="button"
+                className="delete-btn"
+                onClick={() => remove(type, element.id)}
+              >
                 ╳
               </button>
               <p>
