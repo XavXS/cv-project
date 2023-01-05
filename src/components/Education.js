@@ -1,45 +1,40 @@
+import React from 'react';
 import uniqid from 'uniqid';
-import Experience from './Experience';
 
-class Educational extends Experience {
-  constructor() {
-    super();
-    this.addElement = this.addElement.bind(this);
-    this.state = {
-      list: [],
-    };
-  }
-
-  addElement(e) {
-    e.preventDefault();
-    this.setState({
-      list: this.state.list.concat({
-        school: '',
-        title: '',
-        date: '',
-        id: uniqid(),
-      }),
-    });
-  }
-
+class Educational extends React.Component {
   render() {
+    let type = 'education';
+    let { list, change, add } = this.props;
     return (
-      <div>
-        <button className="add-btn" onClick={this.addElement}>
+      <div className="education-list">
+        <button
+          className="add-btn"
+          onClick={(e) =>
+            add(e, type, {
+              school: '',
+              title: '',
+              date: '',
+              id: uniqid(),
+            })
+          }
+        >
           +
         </button>
-        {this.state.list.map((element) => {
+        {list.map((element) => {
           return (
-            <div key={element.id}>
+            <div key={element.id} className="education">
+              <button type="button" className="delete-btn">
+                ╳
+              </button>
+              <div className="divider"></div>
               <p>
                 <label>
                   School Name
                   <input
                     type="text"
                     value={element.school}
-                    name="school"
                     onChange={(e) =>
-                      this.handleChange(e, element.id, 'school')
+                      change(e, element.id, type, 'school')
                     }
                   />
                 </label>
@@ -50,9 +45,8 @@ class Educational extends Experience {
                   <input
                     type="text"
                     value={element.title}
-                    name="major"
                     onChange={(e) =>
-                      this.handleChange(e, element.id, 'title')
+                      change(e, element.id, type, 'title')
                     }
                   />
                 </label>
@@ -61,11 +55,10 @@ class Educational extends Experience {
                 <label>
                   Date of Study
                   <input
-                    type="text"
-                    name="study-date"
+                    type="date"
                     value={element.date}
                     onChange={(e) =>
-                      this.handleChange(e, element.id, 'date')
+                      change(e, element.id, type, 'date')
                     }
                   />
                 </label>

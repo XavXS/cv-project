@@ -2,21 +2,68 @@ import React from 'react';
 
 class General extends React.Component {
   render() {
+    let { change } = this.props;
     return (
-      <div>
+      <div className="general">
+        <div className="divider"></div>
         <p>
-          <label htmlFor="first-name">First Name</label>
-          <input type="text" id="first-name" name="first-name" />
-          <label htmlFor="last-name" name="last-name">
-            Last Name
+          <label htmlFor="name">
+            Full Name
+            <input
+              type="text"
+              id="name"
+              onChange={(e) => change(e, 'name')}
+            />
           </label>
-          <input type="text" id="last-name" />
         </p>
         <p>
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" name="email" />
-          <label htmlFor="number">Phone Number</label>
-          <input type="tel" id="number" name="number" />
+          <label htmlFor="role">
+            Role
+            <input
+              type="text"
+              id="role"
+              onChange={(e) => change(e, 'role')}
+            />
+          </label>
+        </p>
+        <p>
+          <label htmlFor="email">
+            Email
+            <input
+              type="email"
+              id="email"
+              onChange={(e) => change(e, 'email')}
+            />
+          </label>
+        </p>
+        <p>
+          <label htmlFor="number">
+            Phone Number
+            <input
+              type="tel"
+              id="number"
+              onChange={(e) => change(e, 'number')}
+            />
+          </label>
+        </p>
+        <p>
+          <label htmlFor="location">
+            Location
+            <input
+              type="text"
+              id="location"
+              onChange={(e) => change(e, 'location')}
+            />
+          </label>
+        </p>
+        <p>
+          <label htmlFor="desc">
+            Description
+            <textarea
+              id="desc"
+              onChange={(e) => change(e, 'desc')}
+            ></textarea>
+          </label>
         </p>
       </div>
     );

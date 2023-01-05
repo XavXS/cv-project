@@ -1,47 +1,42 @@
-import Experience from './Experience';
+import React from 'react';
 import uniqid from 'uniqid';
 
-class Practical extends Experience {
-  constructor() {
-    super();
-    this.addElement = this.addElement.bind(this);
-    this.state = {
-      list: [],
-    };
-  }
-
-  addElement(e) {
-    e.preventDefault();
-    this.setState({
-      list: this.state.list.concat({
-        company: '',
-        position: '',
-        tasks: '',
-        from: '',
-        until: '',
-        id: uniqid(),
-      }),
-    });
-  }
-
+class Work extends React.Component {
   render() {
+    let type = 'work';
+    let { list, change, add } = this.props;
     return (
-      <div>
-        <button className="add-btn" onClick={this.addElement}>
+      <div className="work-list">
+        <button
+          className="add-btn"
+          onClick={(e) =>
+            add(e, type, {
+              company: '',
+              position: '',
+              tasks: '',
+              from: '',
+              until: '',
+              id: uniqid(),
+            })
+          }
+        >
           +
         </button>
-        {this.state.list.map((element) => {
+        {list.map((element) => {
           return (
-            <div key={element.id}>
+            <div key={element.id} className="work">
+              <div className="divider"></div>
+              <button type="button" className="delete-btn">
+                ╳
+              </button>
               <p>
                 <label>
                   Company Name
                   <input
                     type="text"
                     value={element.company}
-                    name="company"
                     onChange={(e) =>
-                      this.handleChange(e, element.id, 'company')
+                      change(e, element.id, type, 'company')
                     }
                   />
                 </label>
@@ -52,32 +47,31 @@ class Practical extends Experience {
                   <input
                     type="text"
                     value={element.position}
-                    name="position"
                     onChange={(e) =>
-                      this.handleChange(e, element.id, 'position')
+                      change(e, element.id, type, 'position')
                     }
                   />
                 </label>
               </p>
-              <label>
-                Main Tasks
-                <textarea
-                  value={element.tasks}
-                  name="tasks"
-                  onChange={(e) =>
-                    this.handleChange(e, element.id, 'tasks')
-                  }
-                ></textarea>
-              </label>
+              <p>
+                <label>
+                  Main Tasks
+                  <textarea
+                    value={element.tasks}
+                    onChange={(e) =>
+                      change(e, element.id, type, 'tasks')
+                    }
+                  ></textarea>
+                </label>
+              </p>
               <p>
                 <label>
                   Worked From
                   <input
                     type="date"
                     value={element.from}
-                    name="worked-from"
                     onChange={(e) =>
-                      this.handleChange(e, element.id, 'from')
+                      change(e, element.id, type, 'from')
                     }
                   />
                 </label>
@@ -88,9 +82,8 @@ class Practical extends Experience {
                   <input
                     type="date"
                     value={element.until}
-                    name="worked-til"
                     onChange={(e) =>
-                      this.handleChange(e, element.id, 'until')
+                      change(e, element.id, type, 'until')
                     }
                   />
                 </label>
@@ -103,4 +96,4 @@ class Practical extends Experience {
   }
 }
 
-export default Practical;
+export default Work;
