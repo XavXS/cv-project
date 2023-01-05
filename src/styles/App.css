@@ -1,8 +1,109 @@
+:root {
+    --form-color:rgb(223, 223, 223);
+    --input-bg: rgb(203, 203, 203);
+    --text-color: rgb(100, 100, 100);
+    --accent: rgb(95, 158, 97);
+    --accent-neg: rgb(158, 95, 95);
+    --divider: rgb(157, 157, 157);
+    --add: rgb(175, 175, 175);
+    --add-hover: rgba(175, 175, 175, 0.16);
+    --clear: rgb(0, 0, 0, 0);
+    --form-gap: 8px;
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: sans-serif;
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+form {
+    padding: 21px;
+    background-color: var(--form-color);
+    min-height: 100vh;
+}
+
+h1 {
+    margin-bottom: 8px;
+    font-size: 1.7rem;
+}
+
+h2 {
+    margin-top: 13px;
+    margin-bottom: var(--form-gap);
+    font-size: 1.25rem;
+}
+
+.general, .work-list, .education-list, .work, .education {
+    display: flex;
+    flex-direction: column;
+    gap: var(--form-gap);
+}
+
+.work, .education {
+    position: relative;
+}
+
+.delete-btn {
+    background-color: var(--clear);
+    border: none;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.delete-btn:hover {
+    color: var(--accent-neg);
+    cursor: pointer;
+}
+
+.divider {
+    height: 1px;
+    width: 100%;
+    background-color: var(--divider);
+    margin-bottom: 25px;
+}
+
+.general > .divider {
+    height: 3px;
+    background-color: var(--accent);
+    margin-bottom: 13px;
+}
+
+.add-btn {
+    background-color: var(--clear);
+    border: 3px dashed var(--add);
+    color: var(--add);
+    font-size: 1.5rem;
+    transition: background-color 0.15s;
+}
+
+.add-btn:hover {
+    background-color: var(--add-hover);
+}
+
+label {
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input, textarea {
+    width: 225px;
+    height: 32px;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 8px;
+    background-color: var(--input-bg);
+}
+
+textarea {
+    height: 128px;
 }
 
 #app {
