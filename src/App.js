@@ -11,15 +11,49 @@ class App extends React.Component {
 
     this.state = {
       general: {
-        name: '',
-        role: '',
-        number: '',
-        email: '',
-        location: '',
+        name: 'Bob Sponge',
+        role: 'Software Engineer',
+        number: '123-456-7890',
+        email: 'sponge@example.com',
+        location: 'Onesie Bottom',
         desc: '',
       },
-      education: [],
-      work: [],
+      education: [
+        {
+          school: 'Driving School',
+          title: 'Chief Driver',
+          date: 'March 2020',
+        },
+        {
+          school: 'Em Aye Tee',
+          title: 'Software Engineering',
+          date: 'April 2021',
+        },
+      ],
+      work: [
+        {
+          company: 'Krabby O Friday',
+          position: 'Burger Flipper',
+          tasks: 'I flipped burgers and it was very fun',
+          from: 'March 2016',
+          until: 'Present',
+        },
+        {
+          company: 'Goggle',
+          position: 'Sentient AI Maker',
+          tasks:
+            'The AI I made turned sentient and destroyed the server',
+          from: 'October 2005',
+          until: 'March 2010',
+        },
+        {
+          company: 'Pear Computers Inc',
+          position: 'Hardware Engineer',
+          tasks: 'I made pear 2 and it was good success',
+          from: 'September 1985',
+          until: 'December 2000',
+        },
+      ],
     };
 
     this.generalChange = this.generalChange.bind(this);
