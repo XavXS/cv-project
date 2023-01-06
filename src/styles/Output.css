@@ -1,12 +1,62 @@
-:root {
-
-}
-
 .output {
     width: 525px;
     height: 700px;
     border: 2px solid var(--input-bg);
     border-radius: 5px;
+    padding: 25px 40px;
+}
+
+.general-out {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+}
+
+.general-main, .general-extra {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.general-name {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.title-exp {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin-top: 8px;
+}
+
+.general-extra > div, .desc {
+    font-size: 0.84rem;
+}
+
+.divider-exp {
+    height: 1px;
+    background-color: var(--text-color);
+    margin-top: 3px;
+    margin-bottom: 5px;
+}
+
+.divider-out {
+    height: 3px;
+    background-color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.desc {
+    color: gray;
+}
+
+.exp-date {
+    margin-top: 3px;
+    font-size: 0.87rem;
 }
 
 #output {

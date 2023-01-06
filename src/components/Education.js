@@ -60,7 +60,7 @@ class Educational extends React.Component {
                 <label>
                   Date of Study
                   <input
-                    type="date"
+                    type="text"
                     value={element.date}
                     onChange={(e) =>
                       change(e, element.id, type, 'date')

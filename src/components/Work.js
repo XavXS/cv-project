@@ -73,7 +73,7 @@ class Work extends React.Component {
                 <label>
                   Worked From
                   <input
-                    type="date"
+                    type="text"
                     value={element.from}
                     onChange={(e) =>
                       change(e, element.id, type, 'from')
@@ -85,7 +85,7 @@ class Work extends React.Component {
                 <label>
                   Worked Until
                   <input
-                    type="date"
+                    type="text"
                     value={element.until}
                     onChange={(e) =>
                       change(e, element.id, type, 'until')
