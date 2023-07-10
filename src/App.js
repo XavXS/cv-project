@@ -3,76 +3,71 @@ import Work from './components/Work';
 import Education from './components/Education';
 import Output from './components/Output';
 import './styles/App.css';
-import React from 'react';
+import React, { useState } from 'react';
+import uniqid from 'uniqid';
 
-class App extends React.Component {
-  constructor() {
-    super();
+const App = () => {
+  const [general, setGeneral] = useState({
+    name: 'Bob Sponge',
+    role: 'Software Engineer',
+    number: '123-456-7890',
+    email: 'sponge@example.com',
+    location: 'Onesie Bottom',
+    desc: '',
+  });
 
-    this.state = {
-      general: {
-        name: 'Bob Sponge',
-        role: 'Software Engineer',
-        number: '123-456-7890',
-        email: 'sponge@example.com',
-        location: 'Onesie Bottom',
-        desc: '',
-      },
-      education: [
-        {
-          school: 'Driving School',
-          title: 'Chief Driver',
-          date: 'March 2020',
-        },
-        {
-          school: 'Em Aye Tee',
-          title: 'Software Engineering',
-          date: 'April 2021',
-        },
-      ],
-      work: [
-        {
-          company: 'Krabby O Friday',
-          position: 'Burger Flipper',
-          tasks: 'I flipped burgers and it was very fun',
-          from: 'March 2016',
-          until: 'Present',
-        },
-        {
-          company: 'Goggle',
-          position: 'Sentient AI Maker',
-          tasks:
-            'The AI I made turned sentient and destroyed the server',
-          from: 'October 2005',
-          until: 'March 2010',
-        },
-        {
-          company: 'Pear Computers Inc',
-          position: 'Hardware Engineer',
-          tasks: 'I made pear 2 and it was good success',
-          from: 'September 1985',
-          until: 'December 2000',
-        },
-      ],
-    };
+  const [work, setWork] = useState([
+    {
+      company: 'Krabby O Friday',
+      position: 'Burger Flipper',
+      tasks: 'I flipped burgers and it was very fun',
+      from: 'March 2016',
+      until: 'Present',
+      id: uniqid(),
+    },
+    {
+      company: 'Goggle',
+      position: 'Sentient AI Maker',
+      tasks:
+        'The AI I made turned sentient and destroyed the server',
+      from: 'October 2005',
+      until: 'March 2010',
+      id: uniqid(),
+    },
+    {
+      company: 'Pear Computers Inc',
+      position: 'Hardware Engineer',
+      tasks: 'I made pear 2 and it was good success',
+      from: 'September 1985',
+      until: 'December 2000',
+      id: uniqid(),
+    },
+  ]);
 
-    this.generalChange = this.generalChange.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleAdd = this.handleAdd.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
+  const [education, setEducation] = useState([
+    {
+      school: 'Driving School',
+      title: 'Chief Driver',
+      date: 'March 2020',
+      id: uniqid(),
+    },
+    {
+      school: 'Em Aye Tee',
+      title: 'Software Engineering',
+      date: 'April 2021',
+      id: uniqid(),
+    },
+  ]);
+
+  const generalChange = (e, propName) => {
+    const newGeneral = { ...general };
+    newGeneral[propName] = e.target.value;
+    setGeneral(newGeneral);
   }
 
-  generalChange(e, propName) {
-    const general = { ...this.state.general };
-    general[propName] = e.target.value;
-    this.setState({
-      general: general,
-    });
-  }
-
-  handleChange(e, id, type, propName) {
-    const newState = { ...this.state };
-    newState[type] = newState[type].map((element) => {
+  const handleWorkChange = (e, id, propName) => {
+    let newWork = [ ...work ];
+    newWork = newWork.map((element) => {
       if (element.id === id) {
         let newElement = { ...element };
         newElement[propName] = e.target.value;
@@ -80,48 +75,63 @@ class App extends React.Component {
       }
       return element;
     });
-    this.setState(newState);
+    setWork(newWork);
   }
 
-  handleAdd(type, obj) {
-    const newState = { ...this.state };
-    newState[type] = newState[type].concat(obj);
-    this.setState(newState);
+  const handleEdChange = (e, id, propName) => {
+    let newEd = [ ...education ];
+    newEd = newEd.map((element) => {
+      if (element.id === id) {
+        let newElement = { ...element };
+        newElement[propName] = e.target.value;
+        return newElement;
+      }
+      return element;
+    });
+    setEducation(newEd)
   }
 
-  handleDelete(type, id) {
-    const newState = { ...this.state };
-    newState[type] = newState[type].filter(
+  const handleWorkAdd = (obj) => {
+    let newWork = [ ...work ];
+    newWork = newWork.concat(obj);
+    setWork(newWork);
+  }
+
+  const handleEdAdd = (obj) => {
+    let newEd = [ ...education ];
+    newEd = newEd.concat(obj);
+    setEducation(newEd);
+  }
+
+  const handleWorkDelete = (id) => {
+    let newWork = [ ...work ];
+    newWork = newWork.filter(
       (element) => element.id !== id
     );
-    this.setState(newState);
+    setWork(newWork);
   }
 
-  render() {
-    return (
-      <div id="app">
-        <form onSubmit={this.submitForm}>
-          <h1>CV Application</h1>
-          <General change={this.generalChange} />
-          <h2>Work Experience</h2>
-          <Work
-            list={this.state.work}
-            change={this.handleChange}
-            add={this.handleAdd}
-            remove={this.handleDelete}
-          />
-          <h2>Education</h2>
-          <Education
-            list={this.state.education}
-            change={this.handleChange}
-            add={this.handleAdd}
-            remove={this.handleDelete}
-          />
-        </form>
-        <Output data={this.state} />
-      </div>
+  const handleEdDelete = (id) => {
+    let newEd = [ ...education ];
+    newEd = newEd.filter(
+      (element) => element.id !== id
     );
+    setEducation(newEd);
   }
+
+  return (
+    <div id="app">
+      <form>
+        <h1>CV Application</h1>
+        {General(generalChange)}
+        <h2>Work Experience</h2>
+        {Work(work, handleWorkChange, handleWorkAdd, handleWorkDelete)}
+        <h2>Education</h2>
+        {Education(education, handleEdChange, handleEdAdd, handleEdDelete)}
+      </form>
+      {Output(general, work, education)}
+    </div>
+  );
 }
 
 export default App;
